@@ -68,7 +68,7 @@ module SpreeSitemap::SpreeDefaults
   def add_product_filters(store, options = {})
     filters = Spree::ProductFilter.all
     filters.each do |filter|
-      next if filter.taxon_id.nil?
+      next if filter.taxon.nil?
       slug = store.code == 'global' ? filter.en_slug : filter.pt_slug
       add(slug, options.merge(lastmod: filter.taxon.products.last_updated))
     end
